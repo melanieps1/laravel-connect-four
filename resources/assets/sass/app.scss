@@ -7,3 +7,11 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+// TODO: Hook this stylesheet up with Laravel Mix (https://laravel.com/docs/5.4/mix)
+.spot {
+	border: 5px solid #efdc05;
+	height: 20px;
+	width: 20px;
+}
