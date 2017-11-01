@@ -31,17 +31,28 @@ Route::get('/game/{id}/drop/{column}', function($id, $column) {
 	// die;
 
 	// Put checker in column
-	// TODO: Defaulting to row 0, needs to be fixed
-	$board[0][$column] = $game->players[$game->turn % 2];
+	$placed_checker = false;
+	for ($i = 0; $i < $game->rows; $i++) {
+		if ($board[$i][$column] === '') {
+			// If the row that we want in that column is currently unoccupied, then we will fill that spot with the color of player whose turn it is
+			$board[$i][$column] = $game->players[$game->turn % 2];
+			$placed_checker = true;
+			break;
+		}
+	}
 
-	// Did anyone win?
+	if ($placed_checker) {
 
-	// Increment turn counter
-	$game->turn++;
-	$game->board = json_encode($board);
+		// Did anyone win?
 
-	// Save the game state
-	$game->save();
+		// Increment turn counter
+		$game->turn++;
+		$game->board = json_encode($board);
+
+		// Save the game state
+		$game->save();
+
+	}
 
 	// Show the board
 	return redirect()->route('game', ['id' => $id]);
