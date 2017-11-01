@@ -12,7 +12,7 @@
 	background-color: #efdc05;
 	border: 5px solid #efdc05;
 	display: inline-block;
-	/*width: 525px;*/
+	width: 535px;
 }
 
 .row {
@@ -31,6 +31,10 @@
 
 .drop {
 	width: 75px;
+}
+
+.fa-arrow-down {
+	color: #6b6e70;
 }
 
 .btn:hover {
