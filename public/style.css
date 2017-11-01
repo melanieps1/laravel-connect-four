@@ -19,14 +19,14 @@
 	margin: 0px;
 }
 
-.red {
+.Red {
 	background-color: #e53a40;
-	border: 2px solid white;
+	/*border: 2px solid white;*/
 }
 
-.blue {
+.Blue {
 	background-color: #30a9de;
-	border: 2px solid white;
+	/*border: 2px solid white;*/
 }
 
 .drop {
@@ -34,7 +34,7 @@
 }
 
 .fa-arrow-down {
-	color: #6b6e70;
+	color: #999;
 }
 
 .btn:hover {
