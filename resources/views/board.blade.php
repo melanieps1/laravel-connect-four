@@ -13,13 +13,55 @@
 	<h1 class="mt-5 mb-4">Laravel Connect Four</h1>
 
 	<div class="row justify-content-center">
-		<div class="drop"><button class="btn btn-light ml-1 mr-1"><i class="fa fa-arrow-down"></i></button></div>
-		<div class="drop"><button class="btn btn-light ml-1 mr-1"><i class="fa fa-arrow-down"></i></button></button></div>
-		<div class="drop"><button class="btn btn-light ml-1 mr-1"><i class="fa fa-arrow-down"></i></button></button></div>
-		<div class="drop"><button class="btn btn-light ml-1 mr-1"><i class="fa fa-arrow-down"></i></button></button></div>
-		<div class="drop"><button class="btn btn-light ml-1 mr-1"><i class="fa fa-arrow-down"></i></button></button></div>
-		<div class="drop"><button class="btn btn-light ml-1 mr-1"><i class="fa fa-arrow-down"></i></button></button></div>
-		<div class="drop"><button class="btn btn-light ml-1 mr-1"><i class="fa fa-arrow-down"></i></button></button></div>
+		<div class="drop">
+			<form method="get" action="/game/{{ $game_id }}/drop/0">
+				<button class="btn btn-light ml-1 mr-1">
+					<i class="fa fa-arrow-down"></i>
+				</button>
+			</form>
+		</div>
+		<div class="drop">
+			<form method="get" action="/game/{{ $game_id }}/drop/1">
+				<button class="btn btn-light ml-1 mr-1">
+					<i class="fa fa-arrow-down"></i>
+				</button>
+			</form>
+		</div>
+		<div class="drop">
+			<form method="get" action="/game/{{ $game_id }}/drop/2">
+				<button class="btn btn-light ml-1 mr-1">
+					<i class="fa fa-arrow-down"></i>
+				</button>
+			</form>
+		</div>
+		<div class="drop">
+			<form method="get" action="/game/{{ $game_id }}/drop/3">
+				<button class="btn btn-light ml-1 mr-1">
+					<i class="fa fa-arrow-down"></i>
+				</button>
+			</form>
+		</div>
+		<div class="drop">
+			<form method="get" action="/game/{{ $game_id }}/drop/4">
+				<button class="btn btn-light ml-1 mr-1">
+					<i class="fa fa-arrow-down"></i>
+				</button>
+			</form>
+		</div>
+		<div class="drop">
+			<form method="get" action="/game/{{ $game_id }}/drop/5">
+				<button class="btn btn-light ml-1 mr-1">
+					<i class="fa fa-arrow-down"></i>
+				</button>
+			</form>
+		</div>
+		<div class="drop">
+			<form method="get" action="/game/{{ $game_id }}/drop/6">
+				<button class="btn btn-light ml-1 mr-1">
+					<i class="fa fa-arrow-down"></i>
+				</button>
+			</form>
+		</div>
 	</div>
 
 	<div class="mt-3 mb-3 board">
