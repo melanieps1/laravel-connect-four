@@ -14,7 +14,7 @@
 Route::get('/', function () {
 
 	// TODO: Fix this, it's broken
-	$players = ['Red', 'Blue'];
+	$players = ['Blue', 'Red'];
 	$rows = 6;
 	$columns = 7;
 	$turn	= 5;
@@ -64,10 +64,11 @@ Route::get('game/{id}', function($id) {
 
 Route::get('/restart', function() {
 
-	// TODO: End the old game (set in_progress to false?)
+	// TODO: End the old game (set in_progress to false?) once we have user logins and user_ids
 
 	// Make a new game (same Tinker commands)
 	$game = new \App\Game;
+	$game->turn = 1;
 	$game->save();
 
 	$id = $game->id;
