@@ -12,55 +12,99 @@
 
 	<h1 class="mt-5 mb-4">Laravel Connect Four</h1>
 
+	<div class="row message">{{ message }}</div>
+
 	<div class="row justify-content-center">
 		<div class="drop">
+			@if ($in_progress)
 			<form method="get" action="/game/{{ $game_id }}/drop/0">
 				<button class="btn btn-light ml-1 mr-1">
-					<i class="fa fa-arrow-down"></i>
+					<i class="fa fa-arrow-down {{ $currentPlayer }}Drop"></i>
 				</button>
 			</form>
+			@else 
+				<button class="btn btn-light ml-1 mr-1 disabled">
+					<i class="fa fa-arrow-down"></i>
+				</button>
+			@endif
 		</div>
 		<div class="drop">
+			@if ($in_progress)
 			<form method="get" action="/game/{{ $game_id }}/drop/1">
 				<button class="btn btn-light ml-1 mr-1">
-					<i class="fa fa-arrow-down"></i>
+					<i class="fa fa-arrow-down {{ $currentPlayer }}Drop"></i>
 				</button>
 			</form>
+			@else 
+				<button class="btn btn-light ml-1 mr-1 disabled">
+					<i class="fa fa-arrow-down"></i>
+				</button>
+			@endif
 		</div>
 		<div class="drop">
+			@if ($in_progress)
 			<form method="get" action="/game/{{ $game_id }}/drop/2">
 				<button class="btn btn-light ml-1 mr-1">
-					<i class="fa fa-arrow-down"></i>
+					<i class="fa fa-arrow-down {{ $currentPlayer }}Drop"></i>
 				</button>
 			</form>
+			@else 
+				<button class="btn btn-light ml-1 mr-1 disabled">
+					<i class="fa fa-arrow-down"></i>
+				</button>
+			@endif
 		</div>
 		<div class="drop">
+			@if ($in_progress)
 			<form method="get" action="/game/{{ $game_id }}/drop/3">
 				<button class="btn btn-light ml-1 mr-1">
-					<i class="fa fa-arrow-down"></i>
+					<i class="fa fa-arrow-down {{ $currentPlayer }}Drop"></i>
 				</button>
 			</form>
+			@else 
+				<button class="btn btn-light ml-1 mr-1 disabled">
+					<i class="fa fa-arrow-down"></i>
+				</button>
+			@endif
 		</div>
 		<div class="drop">
+			@if ($in_progress)
 			<form method="get" action="/game/{{ $game_id }}/drop/4">
 				<button class="btn btn-light ml-1 mr-1">
-					<i class="fa fa-arrow-down"></i>
+					<i class="fa fa-arrow-down {{ $currentPlayer }}Drop"></i>
 				</button>
 			</form>
+			@else 
+				<button class="btn btn-light ml-1 mr-1 disabled">
+					<i class="fa fa-arrow-down"></i>
+				</button>
+			@endif
 		</div>
 		<div class="drop">
+			@if ($in_progress)
 			<form method="get" action="/game/{{ $game_id }}/drop/5">
 				<button class="btn btn-light ml-1 mr-1">
-					<i class="fa fa-arrow-down"></i>
+					<i class="fa fa-arrow-down {{ $currentPlayer }}Drop"></i>
 				</button>
 			</form>
+			@else 
+				<button class="btn btn-light ml-1 mr-1 disabled">
+					<i class="fa fa-arrow-down"></i>
+				</button>
+			@endif
 		</div>
 		<div class="drop">
+			@if ($in_progress)
 			<form method="get" action="/game/{{ $game_id }}/drop/6">
 				<button class="btn btn-light ml-1 mr-1">
-					<i class="fa fa-arrow-down"></i>
+					<i class="fa fa-arrow-down {{ $currentPlayer }}Drop"></i>
 				</button>
 			</form>
+			@else 
+				<button class="btn btn-light ml-1 mr-1 disabled">
+					<i class="fa fa-arrow-down"></i>
+				</button>
+			@endif
 		</div>
 	</div>
 
@@ -72,7 +116,7 @@
 
 			@for ($j = 0; $j < $columns; $j++)
 
-				<div class="spot {{ $board[$i][$j] }}">{{ $i }} [{{ $j }}]</div>
+				<div class="spot {{ $board[$i][$j] }}"></div>
 
 			@endfor
 

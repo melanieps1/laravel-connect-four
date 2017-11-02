@@ -33,10 +33,23 @@
 	width: 75px;
 }
 
-.fa-arrow-down {
-	color: #999;
+.RedDrop {
+	color: #e53a40;
 }
 
-.btn:hover {
+.BlueDrop {
+	color: #30a9de;
+}
+
+.disabled .fa {
+	color: #999;
+	cursor: default;
+}
+
+.btn .disabled:hover {
 	cursor: pointer;
+}
+
+.message {
+	
 }
