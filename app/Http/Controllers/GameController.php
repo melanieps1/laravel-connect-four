@@ -34,7 +34,8 @@ class GameController extends Controller
 		if ($placed_checker) {
 
 			// Did anyone win?
-			$isWon = $this->checkBoard($board);
+			// $isWon = $this->checkBoard($board);
+			$isWon = $game->game_over;
 			if ($isWon) {
 
 				$game->message = $game->players[$game->turn % 2] . " won!";
@@ -64,43 +65,61 @@ class GameController extends Controller
 		return redirect()->route('game', ['id' => $id]);
 	}
 
-	public function checkBoard($board) {
-		
-		// $board is a two-dimensional array
+	public function compareLine($a, $b, $c, $d) {
 
-		// $wins is the set of lines on the board that represent wins
-		$wins = [
-			[ [0,0], [0,1], [0,2], [0,3] ],
-			[ [1,0], [1,1], [1,2], [1,3] ]
-		];
+		error_log("Checking $a, $b, $c, $d");
 
-		$game_over = false;
-
-		for ($i = 0; $i < count($wins) && !$game_over; $i++) {
-			// $wins[$i] = an array of coordinates
-			// error_log("Checking...\$wins[" . $i . "]"));
-			// error_log(print_r($wins[$i], true));
-
-			$game_over = $this->compareLine(
-				$board[ $wins[$i][0][0] ][ $wins[$i][0][1] ],
-				$board[ $wins[$i][1][0] ][ $wins[$i][1][1] ],
-				$board[ $wins[$i][2][0] ][ $wins[$i][2][1] ],
-				$board[ $wins[$i][3][0] ][ $wins[$i][3][1] ]
-			);
-
-			error_log("Is the game over?? $game_over");
-
-		}
-
-		return $game_over;
-
+		return ($a !== 0) && ($a === $b) && ($a === $c) && ($a === $d);
 	}
 
-	private function compareLine($a, $b, $c, $d) {
+	public function checkBoard($board) {
+		
+		$game_over = false;
 
-		error_log("Checking...$a, $b, $c, $d");
+		// Check down
+		for ($r = 0; $r < 3; $r++) {
+			for ($c = 0; $c < 7; $c++) {
+				if ($this->compareLine($board[$r][$c], $board[$r+1][$c], $board[$r+2][$c], $board[$r+3][$c])) {
+					// return $board[$r][$c];
+        	return $game_over;
+				}
+			}
+		}
 
-		return $a !== '' && $a === $b && $a === $c && $a === $d;
+    // Check right
+    for ($r = 0; $r < 6; $r++) {
+      for ($c = 0; $c < 4; $c++) {
+        if (compareLine($board[$r][$c], $board[$r][$c+1], $board[$r][$c+2], $board[$r][$c+3])) {
+        	// return $board[$r][$c];
+        	return $game_over;
+        }
+      }
+    }
+
+    // Check down-right
+    for ($r = 0; $r < 3; $r++) {
+      for ($c = 0; $c < 4; $c++) {
+        if (compareLine($board[$r][$c], $board[$r+1][$c+1], $board[$r+2][$c+2], $board[$r+3][$c+3])) {
+          // return $board[$r][$c];
+        	return $game_over;
+      	}
+    	}
+  	}
+
+    // Check down-left
+    for ($r = 3; $r < 6; $r++) {
+      for ($c = 0; $c < 4; $c++) {
+        if (compareLine($board[$r][$c], $board[$r-1][$c+1], $board[$r-2][$c+2], $board[$r-3][$c+3])) {
+          // return $board[$r][$c];
+        	return $game_over;
+      	}
+    	}
+  	}
+
+    return 0;
+
+		error_log("Is the game over?? $game_over");
+
 	}
 
 	public function game($id) {
