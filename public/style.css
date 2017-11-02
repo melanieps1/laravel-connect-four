@@ -11,6 +11,7 @@
 .board {
 	background-color: #efdc05;
 	border: 5px solid #efdc05;
+	border-radius: 0.25rem;
 	display: inline-block;
 	width: 535px;
 }
@@ -30,6 +31,8 @@
 }
 
 .drop {
+	height: 24px;
+	margin-bottom: 16px;
 	width: 75px;
 }
 
@@ -51,5 +54,5 @@
 }
 
 .message {
-	
+	width: 535px;
 }

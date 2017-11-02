@@ -37,7 +37,7 @@ class GameController extends Controller
 			$isWon = $this->checkBoard($board);
 			if ($isWon) {
 
-				// TODO: Display a message
+				$game->message = $game->players[$game->turn % 2] . " won!";
 				
 				// in_progress = false
 				$game->in_progress = false;
@@ -47,7 +47,7 @@ class GameController extends Controller
 				// game is tied
 				$game->in_progress = false;
 
-				// TODO: Display a message
+				$game->message = 'Tie game!';
 			
 			}
 
@@ -113,10 +113,11 @@ class GameController extends Controller
 		$columns = $game->columns;
 		$board = json_decode($game->board);
 		$in_progress = $game->in_progress;
+		$message = $game->message;
 
 		$currentPlayer = $game->players[$turn % 2];
 
-		return view('board', compact('game_id', 'currentPlayer', 'turn', 'board', 'rows', 'columns', 'in_progress'));
+		return view('board', compact('game_id', 'currentPlayer', 'turn', 'board', 'rows', 'columns', 'in_progress', 'message'));
 
 		// Can be seen by going to http://localhost:8000/game/2
 		// return "Working on game " . $id;

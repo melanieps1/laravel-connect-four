@@ -12,7 +12,15 @@
 
 	<h1 class="mt-5 mb-4">Laravel Connect Four</h1>
 
-	<div class="row message">{{ message }}</div>
+	<div class="row justify-content-center">
+		<div class="row message alert alert-info justify-content-center mt-3 mb-4">
+			@if ($message !== '')
+				{{ $message }}
+			@else
+				Turn: {{ $turn }}
+			@endif
+		</div>
+	</div>
 
 	<div class="row justify-content-center">
 		<div class="drop">
@@ -128,10 +136,6 @@
 
 	<div class="mt-3 mb-3">
 		Current Player: {{ $currentPlayer }}
-	</div>
-
-	<div class="mt-3 mb-3">
-		Turn: {{ $turn }}
 	</div>
 
 	<div class="mt-3 mb-3">
