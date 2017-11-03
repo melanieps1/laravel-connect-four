@@ -34,18 +34,16 @@ class GameController extends Controller
 		if ($placed_checker) {
 
 			// Did anyone win?
-			// $isWon = $this->checkBoard($board);
-			$isWon = $game->game_over;
+			$isWon = $this->checkBoard($board);
+
 			if ($isWon) {
 
 				$game->message = $game->players[$game->turn % 2] . " won!";
 				
-				// in_progress = false
 				$game->in_progress = false;
 			
-			} if ($game->turn === 42) {
+			} if ($game->turn === 43) {
 			
-				// game is tied
 				$game->in_progress = false;
 
 				$game->message = 'Tie game!';
@@ -67,58 +65,74 @@ class GameController extends Controller
 
 	public function compareLine($a, $b, $c, $d) {
 
-		error_log("Checking $a, $b, $c, $d");
+		// error_log("Checking $a, $b, $c, $d");
 
-		return ($a !== 0) && ($a === $b) && ($a === $c) && ($a === $d);
+		if (($a !== 0) && ($a === $b) && ($a === $c) && ($a === $d)) {
+			$isWon = true;
+		}
 	}
 
 	public function checkBoard($board) {
 		
-		$game_over = false;
+		$isWon = false;
 
 		// Check down
-		for ($r = 0; $r < 3; $r++) {
-			for ($c = 0; $c < 7; $c++) {
-				if ($this->compareLine($board[$r][$c], $board[$r+1][$c], $board[$r+2][$c], $board[$r+3][$c])) {
-					// return $board[$r][$c];
-        	return $game_over;
+		if ($isWon = false) {
+			for ($r = 0; $r < 3; $r++) {
+				for ($c = 0; $c < 7; $c++) {
+					if ($this->compareLine($board[$r][$c], $board[$r+1][$c], $board[$r+2][$c], $board[$r+3][$c])) {
+						// return $board[$r][$c];
+						error_log("Check down $game_over");
+	        	$isWon = true;
+					}
 				}
 			}
 		}
 
     // Check right
-    for ($r = 0; $r < 6; $r++) {
-      for ($c = 0; $c < 4; $c++) {
-        if (compareLine($board[$r][$c], $board[$r][$c+1], $board[$r][$c+2], $board[$r][$c+3])) {
-        	// return $board[$r][$c];
-        	return $game_over;
-        }
-      }
+    else if ($isWon = false) {
+	    for ($r = 0; $r < 6; $r++) {
+	      for ($c = 0; $c < 4; $c++) {
+	        if (compareLine($board[$r][$c], $board[$r][$c+1], $board[$r][$c+2], $board[$r][$c+3])) {
+	        	// return $board[$r][$c];
+	        	error_log("Check right $game_over");
+	        	$isWon = true;
+	        }
+	      }
+	    }
     }
 
     // Check down-right
-    for ($r = 0; $r < 3; $r++) {
-      for ($c = 0; $c < 4; $c++) {
-        if (compareLine($board[$r][$c], $board[$r+1][$c+1], $board[$r+2][$c+2], $board[$r+3][$c+3])) {
-          // return $board[$r][$c];
-        	return $game_over;
-      	}
-    	}
+    else if ($isWon = false) {
+	    for ($r = 0; $r < 3; $r++) {
+	      for ($c = 0; $c < 4; $c++) {
+	        if (compareLine($board[$r][$c], $board[$r+1][$c+1], $board[$r+2][$c+2], $board[$r+3][$c+3])) {
+	          // return $board[$r][$c];
+	          error_log("Check down right $game_over");
+	        	$isWon = true;
+	      	}
+	    	}
+	  	}
   	}
 
     // Check down-left
-    for ($r = 3; $r < 6; $r++) {
-      for ($c = 0; $c < 4; $c++) {
-        if (compareLine($board[$r][$c], $board[$r-1][$c+1], $board[$r-2][$c+2], $board[$r-3][$c+3])) {
-          // return $board[$r][$c];
-        	return $game_over;
-      	}
-    	}
-  	}
+    else if ($isWon = false) {
+	    for ($r = 3; $r < 6; $r++) {
+	      for ($c = 0; $c < 4; $c++) {
+	        if (compareLine($board[$r][$c], $board[$r-1][$c+1], $board[$r-2][$c+2], $board[$r-3][$c+3])) {
+	          // return $board[$r][$c];
+	          error_log("Check down left $game_over");
+	        	$isWon = true;
+	      	}
+	    	}
+	  	}
+	  }
 
-    return 0;
+   else {
+   	$isWon = false;
+   }
 
-		error_log("Is the game over?? $game_over");
+		error_log("Is the game over? $isWon");
 
 	}
 
